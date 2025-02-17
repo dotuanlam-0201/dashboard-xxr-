@@ -14,6 +14,7 @@ const ThemeProvider = (props: { children: ReactNode }) => {
           Typography: {
             colorPrimary: "#6E39CB",
           },
+          Badge: {},
         },
       }}
     >

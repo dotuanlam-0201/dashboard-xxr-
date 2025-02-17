@@ -6,6 +6,7 @@ import itemIcon from "#src/assets/item.svg"
 import saleIcon from "#src/assets/sale.svg"
 import userIcon from "#src/assets/user.svg"
 
+import CardContent from "#src/components/CardContent.tsx"
 import { UI_CONFIG } from "#src/contants/ui.ts"
 import { useConfigTheme } from "#src/hooks/useConfigTheme.tsx"
 import { FileTextFilled } from "@ant-design/icons"
@@ -39,12 +40,8 @@ const items = [
 const DashboardOverview = () => {
   const { token } = useConfigTheme()
   return (
-    <Card>
-      <Typography.Title level={5} color="secondary">
-        Active users right now
-      </Typography.Title>
-
-      <Space size={"large"} direction="horizontal">
+    <CardContent header="Active users right now">
+      <Space wrap size={"large"} direction="horizontal">
         <Space direction="vertical">
           <Typography.Title
             level={1}
@@ -64,7 +61,7 @@ const DashboardOverview = () => {
 
           <Divider />
 
-          <img src={lineChart} />
+          <img style={{ maxWidth: "100%" }} src={lineChart} />
 
           <Typography.Text>
             Upgrade your payout method in setting
@@ -89,7 +86,7 @@ const DashboardOverview = () => {
           </Col>
         ))}
       </Row>
-    </Card>
+    </CardContent>
   )
 }
 

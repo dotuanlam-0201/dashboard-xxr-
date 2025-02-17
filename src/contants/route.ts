@@ -1,4 +1,4 @@
 export const PathRoute = {
   dashboard: '/',
-  analytic: '/analytic',
+  analytics: '/analytics',
 }

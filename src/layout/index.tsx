@@ -1,29 +1,35 @@
 import logo from "#src/assets/logo.svg"
 import { PathRoute } from "#src/contants/route.ts"
+import { useConfigTheme } from "#src/hooks/useConfigTheme.tsx"
 import { SearchOutlined } from "@ant-design/icons"
 import {
   ArrowLeftEndOnRectangleIcon,
   ArrowRightEndOnRectangleIcon,
   HomeIcon,
 } from "@heroicons/react/16/solid"
-import { Button, Input, Layout, Menu, MenuProps, Space, Typography } from "antd"
+import { Button, Input, Layout, Menu, Space, Typography } from "antd"
 import { Content, Header } from "antd/es/layout/layout"
 import Sider from "antd/es/layout/Sider"
-import MenuItem from "antd/es/menu/MenuItem"
-import { ReactNode, useState } from "react"
-import { Link, useNavigate } from "react-router-dom"
+import { ItemType } from "antd/es/menu/interface"
+import { replace, upperFirst } from "lodash"
+import { ReactNode, useMemo, useState } from "react"
+import { Link, useLocation, useNavigate } from "react-router-dom"
 
-type MenuItem = Required<MenuProps>["items"][number]
+// type MenuItem = Required<MenuProps>["items"][number]
 
 const MainLayout = ({ children }: { children: ReactNode }) => {
   const [collapsed, setCollapsed] = useState(false)
   const navigate = useNavigate()
+  const location = useLocation()
+  const {
+    token: { colorPrimary },
+  } = useConfigTheme()
 
   const toggleCollapsed = () => {
     setCollapsed(!collapsed)
   }
 
-  const items: MenuItem[] = [
+  const items = [
     {
       key: "home",
       icon: <HomeIcon style={{ width: 18 }} />,
@@ -34,7 +40,7 @@ const MainLayout = ({ children }: { children: ReactNode }) => {
           label: "Dashboard",
         },
         {
-          key: PathRoute.analytic,
+          key: PathRoute.analytics,
           label: "Analytics",
         },
       ],
@@ -67,6 +73,26 @@ const MainLayout = ({ children }: { children: ReactNode }) => {
       </center>
     )
   }
+
+  const title = useMemo(() => {
+    let selectMenu = {} as ItemType
+    for (let i = 0; i < items.length; i++) {
+      if (items[i].key === location.pathname) {
+        selectMenu = items[i]
+        break
+      } else {
+        for (let j = 0; i < items[i].children.length; j++) {
+          if (items[i].children[j].key === location.pathname) {
+            selectMenu = items[i].children[j]
+            break
+          }
+        }
+      }
+    }
+    const key = replace(String(selectMenu?.key), "/", "")
+    return key === "" ? "Dashboard" : upperFirst(key)
+  }, [location])
+
   return (
     <Layout
       style={{
@@ -82,9 +108,11 @@ const MainLayout = ({ children }: { children: ReactNode }) => {
         <Space size={"large"} style={{ width: "100%" }} direction="vertical">
           {renderLogo()}
           <Menu
+            style={{ fontWeight: 600 }}
             onClick={onSelectMenu}
             defaultSelectedKeys={[PathRoute.dashboard]}
             defaultOpenKeys={["home"]}
+            selectedKeys={[location.pathname]}
             mode="inline"
             theme="light"
             inlineCollapsed={collapsed}
@@ -107,11 +135,10 @@ const MainLayout = ({ children }: { children: ReactNode }) => {
         >
           <Space size={100} align="center">
             <Typography.Title
-              style={{ marginBottom: 0 }}
+              style={{ marginBottom: 0, color: colorPrimary }}
               level={2}
-              type="secondary"
             >
-              Dashboard
+              {title}
             </Typography.Title>
             <Input
               style={{ width: 400 }}
@@ -129,6 +156,7 @@ const MainLayout = ({ children }: { children: ReactNode }) => {
             maxWidth: 1440,
             minWidth: 1200,
             paddingInline: 16,
+            paddingBottom: 200,
           }}
         >
           {children}
