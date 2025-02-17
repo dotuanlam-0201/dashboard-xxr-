@@ -61,7 +61,7 @@ const MainLayout = ({ children }: { children: ReactNode }) => {
     )
   }
 
-  const onSelectMenu = (i: MenuInfo) => {
+  const onSelectMenu = (i: any) => {
     navigate(i.key)
   }
   const renderLogo = () => {
