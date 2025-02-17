@@ -14,14 +14,14 @@ export const Analytics = () => {
         <Col xs={24}>
           <AnalyticsOverview />
         </Col>
-        <Col xs={12} lg={16} xxl={18}>
+        <Col xs={14} lg={16} xxl={18}>
           <Space style={{ width: "100%" }} size={"large"} direction="vertical">
             <SalesFunnel />
             <WatchLists />
           </Space>
         </Col>
 
-        <Col xs={12} lg={8} xxl={6}>
+        <Col xs={10} lg={8} xxl={6}>
           <Space style={{ width: "100%" }} size={"large"} direction="vertical">
             <DeviceCategory />
             <TopCountries />

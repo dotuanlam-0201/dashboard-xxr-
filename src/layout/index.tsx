@@ -97,6 +97,7 @@ const MainLayout = ({ children }: { children: ReactNode }) => {
     <Layout
       style={{
         minHeight: "100%",
+        minWidth: 1200,
       }}
     >
       <Sider
@@ -121,13 +122,12 @@ const MainLayout = ({ children }: { children: ReactNode }) => {
           {renderButtonToggleMenu()}
         </Space>
       </Sider>
-      <Content style={{ background: "#F4F5F9" }}>
+      <Content style={{ background: "#F4F5F9", minWidth: 1200 }}>
         <Header
           style={{
             background: "inherit",
             margin: "0 auto",
             maxWidth: 1440,
-            minWidth: 1200,
             padding: "24px 0 0 0",
             marginBottom: 28,
             paddingInline: 16,
@@ -154,7 +154,6 @@ const MainLayout = ({ children }: { children: ReactNode }) => {
           style={{
             margin: "0 auto",
             maxWidth: 1440,
-            minWidth: 1200,
             paddingInline: 16,
             paddingBottom: 200,
           }}
