@@ -18,7 +18,7 @@ export const ANALYTICS_OVERVIEW = [
   {
     title: 'Today Sessions',
     value: 156000,
-    description: '143 Orders',
+    description: '32k Visitors',
     percentage: 10,
     isIncrease: true,
     format: "0.0a"

@@ -41,7 +41,7 @@ const DashboardOverview = () => {
   const { token } = useConfigTheme()
   return (
     <CardContent header="Active users right now">
-      <Space wrap size={"large"} direction="horizontal">
+      <Space size={"large"} direction="horizontal">
         <Space direction="vertical">
           <Typography.Title
             level={1}
@@ -68,12 +68,16 @@ const DashboardOverview = () => {
           </Typography.Text>
         </Space>
 
-        <img src={chart} />
+        <img style={{ maxWidth: "100%" }} src={chart} />
       </Space>
 
-      <Row gutter={UI_CONFIG.gutter} style={{ marginTop: UI_CONFIG.gutter }}>
+      <Row
+        wrap
+        gutter={[UI_CONFIG.gutter, UI_CONFIG.gutter]}
+        style={{ marginTop: UI_CONFIG.gutter }}
+      >
         {items.map(({ icon, value, label, format = "0a" }) => (
-          <Col xs={6}>
+          <Col xs={12} xl={6}>
             <Card size="small">
               <Space align="center">
                 <img src={icon} />
