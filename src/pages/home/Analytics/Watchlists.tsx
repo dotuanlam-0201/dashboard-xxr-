@@ -1,8 +1,10 @@
 import CardContent from "#src/components/CardContent.tsx"
 import { UI_CONFIG } from "#src/contants/ui.ts"
 import { useConfigTheme } from "#src/hooks/useConfigTheme.tsx"
-import { SALES_FUNNEL_DUMP_DATA } from "#src/pages/home/Analytics/config.ts"
+import { WATCH_LISTS_DUMP_DATA } from "#src/pages/home/Analytics/config.ts"
 import { Flex, Segmented, Tooltip, Typography } from "antd"
+import { get } from "lodash"
+import { useState } from "react"
 import {
   CartesianGrid,
   Line,
@@ -16,6 +18,7 @@ const WatchLists = () => {
   const {
     token: { colorSuccess, colorWarning },
   } = useConfigTheme()
+  const [filter, setFilter] = useState("Daily")
 
   return (
     <CardContent
@@ -27,7 +30,7 @@ const WatchLists = () => {
           <Segmented<string>
             options={["Daily", "Weekly", "Monthly", "Quarterly", "Yearly"]}
             onChange={(value) => {
-              console.log(value) // string
+              setFilter(value)
             }}
           />
         </Flex>
@@ -37,7 +40,7 @@ const WatchLists = () => {
         <LineChart
           width={400}
           height={500}
-          data={SALES_FUNNEL_DUMP_DATA}
+          data={get(WATCH_LISTS_DUMP_DATA, filter)}
           syncId="anyId"
           margin={{
             top: UI_CONFIG.gutter,

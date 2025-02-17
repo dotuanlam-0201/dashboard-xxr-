@@ -33,47 +33,29 @@ export const ANALYTICS_OVERVIEW = [
   },
 ]
 
-export const SALES_FUNNEL_DUMP_DATA = [
-  {
-    name: 'Page A',
-    uv: 4000,
-    pv: 2400,
-    amt: 2400,
-  },
-  {
-    name: 'Page B',
-    uv: 3000,
-    pv: 1398,
-    amt: 2210,
-  },
-  {
-    name: 'Page C',
-    uv: 2000,
-    pv: 9800,
-    amt: 2290,
-  },
-  {
-    name: 'Page D',
-    uv: 2780,
-    pv: 3908,
-    amt: 2000,
-  },
-  {
-    name: 'Page E',
-    uv: 1890,
-    pv: 4800,
-    amt: 2181,
-  },
-  {
-    name: 'Page F',
-    uv: 2390,
-    pv: 3800,
-    amt: 2500,
-  },
-  {
-    name: 'Page G',
-    uv: 3490,
-    pv: 4300,
-    amt: 2100,
-  },
-];
+const generateRandomData = () => {
+  const min = 1000;
+  const max = 5000;
+  return Math.floor(Math.random() * (max - min + 1)) + min;
+};
+
+const generateData = () => {
+  return [
+    { name: 'Page A', uv: generateRandomData(), pv: generateRandomData(), amt: generateRandomData() },
+    { name: 'Page B', uv: generateRandomData(), pv: generateRandomData(), amt: generateRandomData() },
+    { name: 'Page C', uv: generateRandomData(), pv: generateRandomData(), amt: generateRandomData() },
+    { name: 'Page D', uv: generateRandomData(), pv: generateRandomData(), amt: generateRandomData() },
+    { name: 'Page E', uv: generateRandomData(), pv: generateRandomData(), amt: generateRandomData() },
+    { name: 'Page F', uv: generateRandomData(), pv: generateRandomData(), amt: generateRandomData() },
+    { name: 'Page G', uv: generateRandomData(), pv: generateRandomData(), amt: generateRandomData() },
+  ];
+};
+
+export const SALES_FUNNEL_DUMP_DATA = {
+  day: generateData(),
+  month: generateData(),
+  quarter: generateData(),
+  year: generateData(),
+};
+
+export const WATCH_LISTS_DUMP_DATA = { "Daily": generateData(), "Weekly": generateData(), "Monthly": generateData(), "Quarterly": generateData(), "Yearly": generateData() }

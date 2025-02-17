@@ -4,7 +4,7 @@ import { useConfigTheme } from "#src/hooks/useConfigTheme.tsx"
 import { SALES_FUNNEL_DUMP_DATA } from "#src/pages/home/Analytics/config.ts"
 import { DownOutlined } from "@ant-design/icons"
 import { Button, Dropdown, Flex, Tooltip, Typography } from "antd"
-import { upperFirst } from "lodash"
+import { get, upperFirst } from "lodash"
 import { useState } from "react"
 import {
   CartesianGrid,
@@ -16,7 +16,7 @@ import {
 } from "recharts"
 
 const SalesFunnel = () => {
-  const [filter, setFilter] = useState("Month" as string)
+  const [filter, setFilter] = useState("month" as string)
   const {
     token: { colorPrimary },
   } = useConfigTheme()
@@ -63,7 +63,7 @@ const SalesFunnel = () => {
         <LineChart
           width={400}
           height={500}
-          data={SALES_FUNNEL_DUMP_DATA}
+          data={get(SALES_FUNNEL_DUMP_DATA, filter)}
           syncId="anyId"
           margin={{
             top: UI_CONFIG.gutter,
