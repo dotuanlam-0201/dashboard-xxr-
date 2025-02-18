@@ -1,15 +1,16 @@
 import { UI_CONFIG } from "#src/contants/ui.ts"
-import { Card, CardProps, Typography } from "antd"
+import { Card, CardProps, Flex, Typography } from "antd"
 import { ReactNode } from "react"
 
 interface ICardContentProps extends CardProps {
   header: ReactNode
+  headerRightSide?: ReactNode
 }
 
 const CardContent = (props: ICardContentProps) => {
   return (
     <Card {...props}>
-      {typeof props.header === "string" ? (
+      <Flex align="baseline" justify="space-between">
         <Typography.Title
           style={{ marginBottom: UI_CONFIG.gutter }}
           level={5}
@@ -17,9 +18,8 @@ const CardContent = (props: ICardContentProps) => {
         >
           {props.header}
         </Typography.Title>
-      ) : (
-        props.header
-      )}
+        {props.headerRightSide}
+      </Flex>
       {props.children}
     </Card>
   )

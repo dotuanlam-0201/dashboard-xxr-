@@ -24,24 +24,17 @@ const Followers = () => {
     <Row gutter={UI_CONFIG.row_gutter}>
       <Col xs={16}>
         <CardContent
-          header={
-            <Flex justify="space-between">
-              <Typography.Title type="secondary" level={5}>
-                Followers
-              </Typography.Title>
-              <Space
-                size={UI_CONFIG.gutter * 2}
-                style={{ width: "fit-content" }}
-              >
-                <Badge offset={[-60, 12]} dot status="error">
-                  <Typography.Text type="danger">Income</Typography.Text>
-                </Badge>
-                <Badge offset={[-70, 12]} status="success" dot color="error">
-                  <Typography.Text type="success">Outcome</Typography.Text>
-                </Badge>
-              </Space>
-            </Flex>
+          headerRightSide={
+            <Space size={UI_CONFIG.gutter * 2} style={{ width: "fit-content" }}>
+              <Badge offset={[-60, 12]} dot status="error">
+                <Typography.Text type="danger">Income</Typography.Text>
+              </Badge>
+              <Badge offset={[-70, 12]} status="success" dot color="error">
+                <Typography.Text type="success">Outcome</Typography.Text>
+              </Badge>
+            </Space>
           }
+          header={"Followers"}
         >
           <ResponsiveContainer aspect={2} width="100%" height={"100%"}>
             <LineChart

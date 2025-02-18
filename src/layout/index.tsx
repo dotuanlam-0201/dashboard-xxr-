@@ -55,6 +55,14 @@ const MainLayout = ({ children }: { children: ReactNode }) => {
           key: PathRoute.profile_overview,
           label: "Profile Overview",
         },
+        {
+          key: PathRoute.user_report,
+          label: "User Report",
+        },
+        {
+          key: PathRoute.project,
+          label: "All Projects",
+        },
       ],
     },
   ]

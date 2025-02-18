@@ -3,7 +3,7 @@ import { UI_CONFIG } from "#src/contants/ui.ts"
 import { useConfigTheme } from "#src/hooks/useConfigTheme.tsx"
 import { GENDER_RANGE_DUMP_DATA } from "#src/pages/pages/ProfileOverview/config.tsx"
 import { alpha } from "#src/utilities/alpha.ts"
-import { Flex, Segmented, Tooltip, Typography } from "antd"
+import { Segmented, Tooltip } from "antd"
 import { get } from "lodash"
 import { useState } from "react"
 import { Bar, BarChart, Rectangle, ResponsiveContainer, XAxis } from "recharts"
@@ -15,22 +15,17 @@ const AgeRange = () => {
   } = useConfigTheme()
   return (
     <CardContent
-      header={
-        <Flex justify="space-between">
-          <Typography.Title level={5} type="secondary">
-            Best time
-          </Typography.Title>
-
-          <Segmented<string>
-            options={["All", "Men", "Women"]}
-            onChange={(value) => {
-              setFilter(value)
-            }}
-          />
-        </Flex>
+      headerRightSide={
+        <Segmented<string>
+          options={["All", "Men", "Women"]}
+          onChange={(value) => {
+            setFilter(value)
+          }}
+        />
       }
+      header={"Age Rage"}
     >
-      <ResponsiveContainer aspect={1} width="100%" height="100%">
+      <ResponsiveContainer aspect={1.3} width="100%" height="100%">
         <BarChart
           width={500}
           height={300}

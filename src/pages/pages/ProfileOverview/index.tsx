@@ -2,7 +2,7 @@ import { UI_CONFIG } from "#src/contants/ui.ts"
 import MainLayout from "#src/layout/index.tsx"
 import AgeRange from "#src/pages/pages/ProfileOverview/AgeRange.tsx"
 import BestTime from "#src/pages/pages/ProfileOverview/BestTime.tsx"
-import Followers from "#src/pages/pages/ProfileOverview/Followers.tsx"
+import Followers from "#src/pages/pages/ProfileOverview/Follower.tsx"
 import Gender from "#src/pages/pages/ProfileOverview/Gender.tsx"
 import Interaction from "#src/pages/pages/ProfileOverview/Interaction.tsx"
 import MyProfile from "#src/pages/pages/ProfileOverview/MyProfile.tsx"
@@ -26,10 +26,10 @@ const PagesOverview = () => {
               </Col>
             </Row>
             <Row wrap gutter={UI_CONFIG.row_gutter}>
-              <Col xs={16}>
+              <Col xs={14}>
                 <Gender />
               </Col>
-              <Col xs={8}>
+              <Col xs={10}>
                 <AgeRange />
               </Col>
             </Row>

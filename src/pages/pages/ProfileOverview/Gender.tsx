@@ -14,12 +14,12 @@ const Gender = () => {
           <Pie
             cornerRadius={100}
             data={data}
-            cx={300}
-            cy={300}
+            cx={250}
+            cy={250}
             startAngle={180}
             endAngle={0}
-            innerRadius={250}
-            outerRadius={300}
+            innerRadius={200}
+            outerRadius={250}
             dataKey="value"
           >
             {data.map((entry, index) => (

@@ -11,7 +11,7 @@ import { map } from "lodash"
 
 const MyProfile = () => {
   const {
-    token: { colorSuccess, colorError, colorPrimary },
+    token: { colorPrimary },
   } = useConfigTheme()
   return (
     <CardContent header="My profile">

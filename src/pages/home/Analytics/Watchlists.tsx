@@ -2,7 +2,7 @@ import CardContent from "#src/components/CardContent.tsx"
 import { UI_CONFIG } from "#src/contants/ui.ts"
 import { useConfigTheme } from "#src/hooks/useConfigTheme.tsx"
 import { WATCH_LISTS_DUMP_DATA } from "#src/pages/home/Analytics/config.ts"
-import { Flex, Segmented, Tooltip, Typography } from "antd"
+import { Segmented, Tooltip } from "antd"
 import { get } from "lodash"
 import { useState } from "react"
 import {
@@ -22,19 +22,15 @@ const WatchLists = () => {
 
   return (
     <CardContent
-      header={
-        <Flex justify="space-between">
-          <Typography.Title level={5} type="secondary">
-            Watchlists
-          </Typography.Title>
-          <Segmented<string>
-            options={["Daily", "Weekly", "Monthly", "Quarterly", "Yearly"]}
-            onChange={(value) => {
-              setFilter(value)
-            }}
-          />
-        </Flex>
+      headerRightSide={
+        <Segmented<string>
+          options={["Daily", "Weekly", "Monthly", "Quarterly", "Yearly"]}
+          onChange={(value) => {
+            setFilter(value)
+          }}
+        />
       }
+      header={"Watchlists"}
     >
       <ResponsiveContainer width="100%" height={400}>
         <LineChart

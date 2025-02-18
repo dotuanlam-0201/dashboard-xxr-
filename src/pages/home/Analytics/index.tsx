@@ -3,7 +3,7 @@ import MainLayout from "#src/layout/index.tsx"
 import DeviceCategory from "#src/pages/home/Analytics/DeviceCategory.tsx"
 import AnalyticsOverview from "#src/pages/home/Analytics/Overview.tsx"
 import SalesFunnel from "#src/pages/home/Analytics/SalesFunnel.tsx"
-import TopCountries from "#src/pages/home/Analytics/TopCountries.tsx"
+import TopCountries from "#src/pages/home/Analytics/TopCountry.tsx"
 import WatchLists from "#src/pages/home/Analytics/Watchlists.tsx"
 import { Col, Row, Space } from "antd"
 

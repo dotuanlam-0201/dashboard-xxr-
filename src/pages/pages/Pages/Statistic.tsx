@@ -2,29 +2,33 @@ import CardContent from "#src/components/CardContent.tsx"
 import { UI_CONFIG } from "#src/contants/ui.ts"
 import { useConfigTheme } from "#src/hooks/useConfigTheme.tsx"
 import { SALES_FUNNEL_DUMP_DATA } from "#src/pages/home/Analytics/config.ts"
-import { DownOutlined } from "@ant-design/icons"
-import { Button, Dropdown, Tooltip } from "antd"
+import { alpha } from "#src/utilities/alpha.ts"
+import Icon from "@ant-design/icons"
+import { ChevronDownIcon } from "@heroicons/react/16/solid"
+import { Button, Dropdown, Tooltip, Typography } from "antd"
 import { get, upperFirst } from "lodash"
 import { useState } from "react"
 import {
+  Bar,
+  BarChart,
+  Brush,
   CartesianGrid,
-  Line,
-  LineChart,
+  ReferenceLine,
   ResponsiveContainer,
   XAxis,
   YAxis,
 } from "recharts"
 
-const SalesFunnel = () => {
+const ReportStatistic = () => {
   const [filter, setFilter] = useState("month" as string)
   const {
-    token: { colorPrimary },
+    token: { colorPrimary, colorInfo },
   } = useConfigTheme()
   return (
     <CardContent
+      header={"Statistics"}
       headerRightSide={
         <Dropdown
-          arrow
           menu={{
             items: [
               {
@@ -48,19 +52,18 @@ const SalesFunnel = () => {
           }}
         >
           <Button type="primary">
-            {upperFirst(filter)}
-            <DownOutlined />
+            {upperFirst(filter)} <Icon component={ChevronDownIcon} />
           </Button>
         </Dropdown>
       }
-      header={"Sales Funnel"}
     >
-      <ResponsiveContainer width="100%" height={400}>
-        <LineChart
-          width={400}
-          height={500}
+      <Typography.Title level={4}>Sales closed</Typography.Title>
+
+      <ResponsiveContainer aspect={2} width="100%" height="100%">
+        <BarChart
+          width={500}
+          height={300}
           data={get(SALES_FUNNEL_DUMP_DATA, filter)}
-          syncId="anyId"
           margin={{
             top: UI_CONFIG.gutter,
             right: 0,
@@ -72,11 +75,22 @@ const SalesFunnel = () => {
           <XAxis dataKey="name" />
           <YAxis />
           <Tooltip />
-          <Line type="monotone" dataKey="pv" stroke={colorPrimary} />
-        </LineChart>
+          <ReferenceLine y={0} stroke="#000" />
+          <Brush dataKey="name" height={30} stroke={alpha(colorPrimary, 0.5)} />
+          <Bar
+            radius={UI_CONFIG.gutter * 2}
+            dataKey="pv"
+            fill={alpha(colorPrimary, 0.5)}
+          />
+          <Bar
+            radius={UI_CONFIG.gutter * 2}
+            dataKey="uv"
+            fill={alpha(colorInfo, 0.5)}
+          />
+        </BarChart>
       </ResponsiveContainer>
     </CardContent>
   )
 }
 
-export default SalesFunnel
+export default ReportStatistic
