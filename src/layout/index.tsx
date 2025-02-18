@@ -63,6 +63,10 @@ const MainLayout = ({ children }: { children: ReactNode }) => {
           key: PathRoute.project,
           label: "All Projects",
         },
+        {
+          key: PathRoute.setting,
+          label: "Account Setting",
+        },
       ],
     },
   ]

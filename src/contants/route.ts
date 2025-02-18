@@ -4,4 +4,5 @@ export const PathRoute = {
   profile_overview: '/profile_overview',
   user_report: '/user_report',
   project: '/project',
+  setting: '/setting',
 }

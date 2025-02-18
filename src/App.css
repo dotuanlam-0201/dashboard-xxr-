@@ -15,3 +15,6 @@ h5.ant-typography {
 div.ant-space {
   width: 100%;
 }
+div.ant-form-item {
+  margin-bottom: 0;
+}
