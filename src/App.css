@@ -11,3 +11,7 @@ h4.ant-typography,
 h5.ant-typography {
   margin-bottom: 0;
 }
+
+div.ant-space {
+  width: 100%;
+}

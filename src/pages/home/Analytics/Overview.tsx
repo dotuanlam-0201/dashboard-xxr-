@@ -1,6 +1,8 @@
 import { UI_CONFIG } from "#src/contants/ui.ts"
 import { useConfigTheme } from "#src/hooks/useConfigTheme.tsx"
 import { ANALYTICS_OVERVIEW } from "#src/pages/home/Analytics/config.ts"
+import Icon from "@ant-design/icons"
+import { ArrowDownIcon, ArrowUpIcon } from "@heroicons/react/16/solid"
 import { Card, Col, Row, Space, Tag, Typography } from "antd"
 import numeral from "numeral"
 
@@ -25,7 +27,10 @@ const AnalyticsOverview = () => {
                     style={{ marginLeft: UI_CONFIG.gutter }}
                     color={isIncrease ? "success" : "error"}
                   >
-                    {isIncrease ? "+" : "-"} {percentage} %
+                    <Icon
+                      component={isIncrease ? ArrowUpIcon : ArrowDownIcon}
+                    />
+                    {percentage} %
                   </Tag>
                 </Typography.Text>
                 <Typography.Title style={{ color: colorPrimary, margin: 0 }}>

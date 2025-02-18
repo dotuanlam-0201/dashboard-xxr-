@@ -33,11 +33,13 @@ const Impression = () => {
           <XAxis dataKey="name" />
           <Tooltip />
           <Bar
+            radius={[UI_CONFIG.gutter, UI_CONFIG.gutter, 0, 0]}
             dataKey="pv"
             fill={colorPrimary}
             activeBar={<Rectangle fill="pink" stroke="blue" />}
           />
           <Bar
+            radius={[UI_CONFIG.gutter, UI_CONFIG.gutter, 0, 0]}
             dataKey="uv"
             fill={colorSuccess}
             activeBar={<Rectangle fill="gold" stroke="purple" />}

@@ -5,13 +5,14 @@ import { SearchOutlined } from "@ant-design/icons"
 import {
   ArrowLeftEndOnRectangleIcon,
   ArrowRightEndOnRectangleIcon,
+  DocumentTextIcon,
   HomeIcon,
 } from "@heroicons/react/16/solid"
 import { Button, Input, Layout, Menu, Space, Typography } from "antd"
 import { Content, Header } from "antd/es/layout/layout"
 import Sider from "antd/es/layout/Sider"
 import { ItemType } from "antd/es/menu/interface"
-import { replace, upperFirst } from "lodash"
+import { get } from "lodash"
 import { ReactNode, useMemo, useState } from "react"
 import { Link, useLocation, useNavigate } from "react-router-dom"
 
@@ -45,6 +46,17 @@ const MainLayout = ({ children }: { children: ReactNode }) => {
         },
       ],
     },
+    {
+      key: "pages",
+      icon: <DocumentTextIcon style={{ width: 18 }} />,
+      label: "Pages",
+      children: [
+        {
+          key: PathRoute.profile_overview,
+          label: "Profile Overview",
+        },
+      ],
+    },
   ]
 
   const renderButtonToggleMenu = () => {
@@ -64,6 +76,7 @@ const MainLayout = ({ children }: { children: ReactNode }) => {
   const onSelectMenu = (i: any) => {
     navigate(i.key)
   }
+
   const renderLogo = () => {
     return (
       <center>
@@ -81,7 +94,7 @@ const MainLayout = ({ children }: { children: ReactNode }) => {
         selectMenu = items[i]
         break
       } else {
-        for (let j = 0; i < items[i].children.length; j++) {
+        for (let j = 0; j < items[i].children.length; j++) {
           if (items[i].children[j].key === location.pathname) {
             selectMenu = items[i].children[j]
             break
@@ -89,8 +102,7 @@ const MainLayout = ({ children }: { children: ReactNode }) => {
         }
       }
     }
-    const key = replace(String(selectMenu?.key), "/", "")
-    return key === "" ? "Dashboard" : upperFirst(key)
+    return get(selectMenu, "label")
   }, [location])
 
   return (
