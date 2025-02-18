@@ -5,6 +5,7 @@ import { SearchOutlined } from "@ant-design/icons"
 import {
   ArrowLeftEndOnRectangleIcon,
   ArrowRightEndOnRectangleIcon,
+  DevicePhoneMobileIcon,
   DocumentTextIcon,
   HomeIcon,
 } from "@heroicons/react/16/solid"
@@ -70,6 +71,17 @@ const MainLayout = ({ children }: { children: ReactNode }) => {
         {
           key: PathRoute.billing,
           label: "Plans and billing ",
+        },
+      ],
+    },
+    {
+      key: "application",
+      icon: <DevicePhoneMobileIcon style={{ width: 18 }} />,
+      label: "Application",
+      children: [
+        {
+          key: PathRoute.calendar,
+          label: "Calendar",
         },
       ],
     },

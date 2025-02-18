@@ -6,4 +6,5 @@ export const PathRoute = {
   project: '/project',
   setting: '/setting',
   billing: '/billing',
+  calendar: '/calendar',
 }
