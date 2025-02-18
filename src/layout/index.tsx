@@ -83,6 +83,10 @@ const MainLayout = ({ children }: { children: ReactNode }) => {
           key: PathRoute.calendar,
           label: "Calendar",
         },
+        {
+          key: PathRoute.data_table,
+          label: "Data Tables",
+        },
       ],
     },
   ]
