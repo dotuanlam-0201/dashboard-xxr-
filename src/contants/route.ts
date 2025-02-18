@@ -5,4 +5,5 @@ export const PathRoute = {
   user_report: '/user_report',
   project: '/project',
   setting: '/setting',
+  billing: '/billing',
 }
