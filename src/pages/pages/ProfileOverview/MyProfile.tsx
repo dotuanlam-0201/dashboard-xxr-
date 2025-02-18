@@ -47,7 +47,7 @@ const MyProfile = () => {
           <Flex justify="space-between" align="center" key={i}>
             <Space direction="vertical">
               <Typography.Text>{name}</Typography.Text>
-              <Space direction="horizontal">
+              <Space wrap direction="horizontal">
                 {map(tags, (tag, i) => (
                   <Typography.Text
                     style={{ fontSize: 10 }}
