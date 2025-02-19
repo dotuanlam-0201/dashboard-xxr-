@@ -8,4 +8,5 @@ export const PathRoute = {
   billing: '/billing',
   calendar: '/calendar',
   data_table: '/data_table',
+  wizard: '/wizard',
 }

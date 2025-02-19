@@ -1,6 +1,7 @@
 import { PathRoute } from "#src/contants/route.ts"
 import CalendarPage from "#src/pages/application/Calendar/index.tsx"
 import DataTable from "#src/pages/application/DataTable/index.tsx"
+import WizardPage from "#src/pages/application/Wizard/index.tsx"
 import { Analytics } from "#src/pages/home/Analytics/index.tsx"
 import Report from "#src/pages/pages/Pages/index.tsx"
 import Project from "#src/pages/pages/Pages/Project.tsx"
@@ -23,6 +24,7 @@ function App() {
       <Route path={PathRoute.billing} element={<Billing />} />
       <Route path={PathRoute.calendar} element={<CalendarPage />} />
       <Route path={PathRoute.data_table} element={<DataTable />} />
+      <Route path={PathRoute.wizard} element={<WizardPage />} />
     </Routes>
   )
 }

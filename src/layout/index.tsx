@@ -87,6 +87,10 @@ const MainLayout = ({ children }: { children: ReactNode }) => {
           key: PathRoute.data_table,
           label: "Data Tables",
         },
+        {
+          key: PathRoute.wizard,
+          label: "Wizard",
+        },
       ],
     },
   ]
